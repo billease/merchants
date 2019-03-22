@@ -197,6 +197,6 @@ tags:
         name: ping
         description: Information about service
 x-logo:
-    url: './billease-logo.png'
+    url: 'https://github.com/billease/merchants/blob/master/billease-logo.png'
     backgroundColor: '#FFFFFF'
     altText: Billease
