@@ -1,7 +1,11 @@
 openapi: 3.0.2
 info:
     title: Billease Merchants. Transaction API
-    description: Billease Merchants API. Transactions
+    description: |
+        Billease Merchants API. Transactions
+
+        ![Diagram](https://billease.github.io/merchants/diagram.png)
+
     contact:
         name: IT Department
         url: 'https://www.firstdigitalfinance.com'
