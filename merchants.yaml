@@ -7,6 +7,10 @@ info:
         url: 'https://www.firstdigitalfinance.com'
         email: api-info@firstdigitalfinance.com
     version: 1.0.0
+    x-logo:
+        url: 'https://billease.github.io/merchants/billease-logo.png'
+        backgroundColor: '#FFFFFF'
+        altText: Billease
 servers:
     -
         url: 'http://{domain}:{port}/bem-merch-api/'
@@ -196,7 +200,3 @@ tags:
     -
         name: ping
         description: Information about service
-x-logo:
-    url: 'https://github.com/billease/merchants/blob/master/billease-logo.png'
-    backgroundColor: '#FFFFFF'
-    altText: Billease
