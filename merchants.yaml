@@ -1,0 +1,454 @@
+openapi: 3.0.2
+info:
+    title: BE Merchants. Merchants
+    description: Billease Merchants API. Operations with merchants
+    contact:
+        name: IT Department
+        url: 'https://www.firstdigitalfinance.com'
+        email: api-info@firstdigitalfinance.com
+    version: 1.0.0
+servers:
+    -
+        url: 'http://{domain}:{port}/bem-merch-api/'
+        description: Server URL
+        variables:
+            domain:
+                default: wateway.web.lt
+                description: Back end API
+            port:
+                default: '80'
+                description: Production port
+paths:
+    /ping:
+        summary: Information about service
+        description: Get information about service
+        get:
+            tags:
+                - ping
+            summary: Information about service
+            description: Get information about service
+            operationId: ping
+            responses:
+                '200':
+                    description: Successful operation
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/ping'
+                            examples:
+                                ok:
+                                    value:
+                                        nam: api name
+                                        env: prod
+                                        ver: 1.0.1
+                                        srv: '2018-10-25T13:12:01'
+                '401':
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/message'
+                            examples:
+                                Unauthorized:
+                                    value:
+                                        message: Unauthorized
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                            examples:
+                                error:
+                                    value:
+                                        error: internal server error
+    /merchants:
+        description: |-
+            - Get list of merchants
+            - Create new merchant
+            - Update merchant
+        get:
+            tags:
+                - merchant
+            summary: Get all merchants
+            description: Get information about all merchants
+            operationId: getMerchants
+            parameters:
+                -
+                    name: page
+                    in: query
+                    description: Page number
+                    schema:
+                        type: integer
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/getMerchants'
+        post:
+            tags:
+                - merchant
+            summary: Create new merchant
+            description: Create new merchant
+            operationId: createMerchant
+            requestBody:
+                description: New merchant
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/merchantWrite'
+                required: true
+            responses:
+                '200':
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/response'
+                            examples:
+                                ok:
+                                    value:
+                                        id: 96
+                '400':
+                    description: Bad Request.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+                '401':
+                    description: Unauthorized
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/message'
+                            examples:
+                                message:
+                                    value:
+                                        message: Unauthorized
+                '500':
+                    description: Internal Server Error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/error'
+            security:
+                -
+                    security:
+                        - 'mer:write'
+components:
+    schemas:
+        message:
+            title: Root Type for message
+            description: Some message from the server
+            required:
+                - message
+            type: object
+            properties:
+                message:
+                    description: Message field
+                    type: string
+            example: |-
+                {
+                    "message": "no Route matched with those values"
+                }
+        response:
+            title: Root Type for response
+            description: Success response message
+            type: object
+            properties:
+                id:
+                    format: int32
+                    description: Record ID
+                    type: integer
+            example: |-
+                {
+                    "id": 25
+                }
+        pages:
+            description: Pagination
+            required:
+                - current
+            type: object
+            properties:
+                count:
+                    format: int32
+                    description: Total number of pages
+                    type: integer
+                previous:
+                    format: int32
+                    description: Previous page number
+                    type: integer
+                current:
+                    format: int32
+                    description: Current page
+                    type: integer
+                next:
+                    format: int32
+                    description: Next page number
+                    type: integer
+            example:
+                count: 75
+                previous: 4
+                current: 5
+                next: 6
+        merchantRead:
+            title: Root Type for merchantRerad
+            description: Merchant information
+            required:
+                - created
+                - id
+                - name
+                - reg_date
+                - status
+                - status_id
+                - tin
+                - trade_name
+                - type
+                - type_id
+            type: object
+            properties:
+                id:
+                    format: int32
+                    description: ID
+                    type: integer
+                created:
+                    format: date-time
+                    description: Created date
+                    type: string
+                name:
+                    description: Registered Business Name
+                    type: string
+                status:
+                    description: |-
+                        Status:
+                        1 - New
+                        2 - Approved
+                        3 - Rejected
+                        4 - Locked
+                    type: string
+                status_id:
+                    format: int32
+                    description: Status ID
+                    type: integer
+                trade_name:
+                    description: Trade Name
+                    type: string
+                industry_id:
+                    format: int32
+                    description: Industry ID
+                    type: integer
+                industry:
+                    description: Industry
+                    type: string
+                type_id:
+                    format: int32
+                    description: Company Type ID
+                    type: integer
+                type:
+                    description: Company Type
+                    type: string
+                reg_date:
+                    format: date-time
+                    description: Registration date
+                    type: string
+                empl_num:
+                    format: int32
+                    description: Number of Employees
+                    type: integer
+                tin:
+                    description: Tax Identification Number
+                    type: string
+            example: |-
+                {
+                    "id": 1,
+                    "created": "2019-03-21T13:44:15",
+                    "name": "Apple Inc.",
+                    "status": "Approved",
+                    "status_id": 2,
+                    "trade_name": "Apple",
+                    "industry_id": 2,
+                    "industry": "Electronics",
+                    "type_id": 1,
+                    "type": "Company type",
+                    "reg_date": "1983-12-20T15:12:15",
+                    "empl_num": 3000,
+                    "tin": "123456"
+                }
+        getMerchants:
+            description: Get All merchants
+            required:
+                - pages
+            type: object
+            properties:
+                pages:
+                    $ref: '#/components/schemas/pages'
+                    description: Pagination
+                results:
+                    description: Information about merchants
+                    type: array
+                    items:
+                        $ref: '#/components/schemas/merchantRead'
+            example:
+                pages:
+                    count: 81
+                    previous: 0
+                    current: 1
+                    next: 2
+                results:
+                    -
+                        id: 2
+                        created: '2019-03-21T13:44:15'
+                        name: Alphabet Inc.
+                        status: New
+                        status_id: 2
+                        trade_name: Google
+                        industry_id: 2
+                        industry: Electronics
+                        type_id: 1
+                        type: Company type
+                        reg_date: '1983-12-20T15:12:15'
+                        empl_num: 3000
+                        tin: '123456'
+                    -
+                        id: 1
+                        created: '2019-03-21T13:44:15'
+                        name: Apple Inc.
+                        status: Approved
+                        status_id: 2
+                        trade_name: Apple
+                        industry_id: 2
+                        industry: Electronics
+                        type_id: 1
+                        type: Company type
+                        reg_date: '1983-12-20T15:12:15'
+                        empl_num: 3000
+                        tin: '123456'
+        error:
+            title: main error type
+            description: Error object
+            required:
+                - error
+            type: object
+            properties:
+                error:
+                    $ref: '#/components/schemas/error_description'
+                    description: Error object
+            example:
+                error:
+                    code: some text
+                    message: some text
+                    data:
+                        field_1:
+                            - error message 1
+                            - error message 2
+                        field_2:
+                            - error message
+        error_description:
+            title: error description type
+            description: Error description
+            type: object
+            properties:
+                code:
+                    description: Error code
+                    type: string
+                message:
+                    description: Main error message
+                    type: string
+                data:
+                    description: Error data
+                    type: object
+                    additionalProperties:
+                        description: Field error messages
+                        type: array
+                        items:
+                            type: string
+        ping:
+            title: ping type
+            description: Information about service
+            type: object
+            properties:
+                nam:
+                    description: Name of the service
+                    type: string
+                env:
+                    description: 'Environment: prod;uat;dev'
+                    type: string
+                ver:
+                    description: Service version
+                    type: string
+                srv:
+                    format: date-time
+                    description: Server time
+                    type: string
+            example: |
+                {
+                  "nam":"api name",
+                  "env": "prod",
+                  "ver":"1.0.1",
+                  "srv":"2018-10-25T13:12:01"
+                }
+        merchantWrite:
+            title: Root Type for merchantRerad
+            description: Create/Update merchant information
+            type: object
+            properties:
+                name:
+                    description: Registered Business Name
+                    type: string
+                status_id:
+                    format: int32
+                    description: Status ID
+                    type: integer
+                trade_name:
+                    description: Trade Name
+                    type: string
+                industry_id:
+                    format: int32
+                    description: Industry ID
+                    type: integer
+                type_id:
+                    format: int32
+                    description: Company Type ID
+                    type: integer
+                reg_date:
+                    format: date-time
+                    description: Registration date
+                    type: string
+                empl_num:
+                    format: int32
+                    description: Number of Employees
+                    type: integer
+                tin:
+                    description: Tax Identification Number
+                    type: string
+            example:
+                name: Apple Inc.
+                status_id: 2
+                trade_name: Apple
+                industry_id: 2
+                type_id: 1
+                reg_date: '1983-12-20T15:12:15'
+                empl_num: 3000
+                tin: '123456'
+    securitySchemes:
+        security:
+            type: oauth2
+            description: Security Roles
+            flows:
+                implicit:
+                    authorizationUrl: 'https://example.com/oauth/authorize'
+                    scopes:
+                        'mer:write': Create/Update information about merchant
+                        'shop:write': Create/Update information about merchant
+tags:
+    -
+        name: ping
+        description: Information about service
+    -
+        name: merchant
+        description: Operations with merchant
+    -
+        name: shop
+        description: Operations with shops
