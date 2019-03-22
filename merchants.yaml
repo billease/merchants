@@ -9,7 +9,6 @@ info:
     version: 1.0.0
     x-logo:
         url: 'https://billease.github.io/merchants/billease-logo.png'
-        backgroundColor: '#FFFFFF'
         altText: Billease
 servers:
     -
