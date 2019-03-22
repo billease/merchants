@@ -196,13 +196,7 @@ tags:
     -
         name: ping
         description: Information about service
-    -
-        name: merchant
-        description: Operations with merchant
-    -
-        name: shop
-        description: Operations with shops
 x-logo:
-    url: 'https://billease.ph/assets/billease-logo.svg'
+    url: './billease-logo.png'
     backgroundColor: '#FFFFFF'
     altText: Billease
