@@ -20,11 +20,11 @@ info:
 
         ## Security
 
-        You will need a security key for integration with Billease API. You can download it in the Merchant's portal
+        You will need the security key for integration with Billease API. You can download it on the [Merchant's portal](https://merchants.billease.ph).
 
         ## Integration API
 
-        ### Sandbox endpoint
+        ### Sandbox
 
         This is a development environment. You can use it for development and testing purposes.
 
