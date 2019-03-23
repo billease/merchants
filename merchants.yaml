@@ -2,15 +2,13 @@ openapi: 3.0.2
 info:
     title: Billease Merchants. Transaction API
     description: |
-        Billease Merchants API. Transactions
-
-        ## Merchant Registation
+        ## Merchant Registration
 
         You have to register as a merchant in the [Merchant's portal](https://merchants.billease.ph).
 
-        The registration procedure as simple as possible
+        Registration procedure as simple as possible
 
-            Fill the form --> Form review --> Done!
+        1. Fill the form --> 2. Application review --> 3. Done!
 
         Please see details on the main site.
 
@@ -20,13 +18,13 @@ info:
 
         ## Security
 
-        You will need sekurity key for integration with Billease api. You can download it in the Merchjant portal
+        You will need a security key for integration with Billease API. You can download it in the Merchant's portal
 
         ## Integration API
 
         ### Sandbox endpoint
 
-        This is development environment. You can use it for development and testing purposes.
+        This is a development environment. You can use it for development and testing purposes.
 
         [https://sandbox.payments.billease.ph](https://sandbox.payments.billease.ph)
 
