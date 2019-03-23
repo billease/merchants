@@ -4,27 +4,25 @@
 
 Welcome to the official Billease developers portal. Here you will find all needed information about integration with billease services.
 
-## Merchant Registarion
+## :page_facing_up: Merchant Registarion
 
-## Payment Process
+## :money_with_wings: Payment Process
 
 ![Diagram](./assets/diagram.png)
 
-## Security
-
-:key:
+## :key: Security
 
 You will need sekurity key for integration with Billease api. You can download it in the Merchjant portal
 
-## Integration API
+## :bank: Integration API
 
-### Sandbox endpoint
+### :construction_worker: Sandbox endpoint
 
 This is development environment. You can use it for development and testing purposes.
 
 [https://sandbox.payments.billease.ph](https://sandbox.payments.billease.ph)
 
-### Production endpoint
+### :bangbang: Production endpoint
 
 Production endpoint:
 
