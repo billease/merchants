@@ -10,13 +10,15 @@ You have to register as a merchant in the [Merchant's portal](https://merchants.
 
 Registration procedure as simple as possible
 
-1. Fill the form --> 2. Application review --> 3. Done!
+```text
+1. Fill the form --> 2. Form review --> 3. Done!
+```
 
 Please see details on the main site.
 
 ## Payment Process
 
-![Diagram](./assets/diagram.png)
+![Diagram](./assets/checkout_diagram.png)
 
 ## Security
 
