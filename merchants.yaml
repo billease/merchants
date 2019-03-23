@@ -4,8 +4,38 @@ info:
     description: |
         Billease Merchants API. Transactions
 
-        ![Diagram](https://billease.github.io/merchants/assests/diagram.png)
+        ## :page_facing_up: Merchant Registation
 
+        You have to register as a merchant in the [Merchant's portal](https://merchants.billease.ph).
+
+        Registration procedure as simple as possible:
+
+            Fill the form --> Form review --> Done!
+
+        Please see details on the main site.
+
+        ## :money_with_wings: Payment Process
+
+        ![Diagram](./assets/diagram.png)
+
+        # :key: Security
+
+        You will need sekurity key for integration with Billease api. You can download it in the Merchjant portal
+
+        # :bank: Integration API
+
+        ## :construction_worker: Sandbox endpoint
+
+        his is development environment. You can use it for development and testing purposes.
+
+        https://sandbox.payments.billease.ph](https://sandbox.payments.billease.ph)
+
+        ### :bangbang: Production endpoint
+
+        Production endpoint:
+
+        [https://payments.billease.ph](https://payments.billease.ph)
+        
     contact:
         name: IT Department
         url: 'https://www.firstdigitalfinance.com'
